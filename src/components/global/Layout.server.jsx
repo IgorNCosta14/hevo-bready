@@ -4,6 +4,7 @@ import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
 import {Header} from '~/components';
 import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
+import {AnnouncementBar} from './AnnouncementBar/AnnouncementBar.server';
 
 const HEADER_MENU_HANDLE = 'main-menu';
 const FOOTER_MENU_HANDLE = 'footer';
@@ -22,6 +23,7 @@ export function Layout({children}) {
             Skip to content
           </a>
         </div>
+        <AnnouncementBar />
         <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
           <HeaderWithMenu />
         </Suspense>

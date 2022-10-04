@@ -19,6 +19,9 @@ module.exports = {
         contrast: withOpacityValue('--color-contrast'),
         notice: withOpacityValue('--color-accent'),
         shopPay: 'var(--color-shop-pay)',
+        black: '#090808',
+        whitebg: '#F2F2F2',
+        redbg: '#E43720',
       },
       screens: {
         sm: '32em',
@@ -42,13 +45,17 @@ module.exports = {
         'screen-no-nav':
           'calc(var(--screen-height, 100vh) - var(--height-nav))',
         'screen-dynamic': 'var(--screen-height-dynamic, 100vh)',
+        'a-bg-h': '2.5rem',
       },
       width: {
         mobileGallery: 'calc(100vw - 3rem)',
+        full: '100%',
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        poppins: ['Poppins'],
+        ubuntu: ['Ubuntu'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

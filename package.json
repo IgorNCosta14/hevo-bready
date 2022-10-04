@@ -38,11 +38,14 @@
     "@headlessui/react": "^1.7.0",
     "@shopify/hydrogen": "^1.4.3",
     "clsx": "^1.1.1",
+    "components": "^0.1.0",
     "graphql-tag": "^2.12.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
     "react-use": "^17.4.0",
+    "styled": "^1.0.0",
+    "styled-components": "^5.3.6",
     "typographic-base": "^1.0.4"
   },
   "author": "55719"

@@ -128,32 +128,34 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
   const styles = {
     button:
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-    container: `${
-      isHome
-        ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-        : 'bg-contrast/80 text-primary'
-    } ${
+    container: `${isHome ? '' : 'bg-contrast/80 text-primary'} ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`,
+    } h-nav `,
   };
 
   return (
     <header role="banner" className={styles.container}>
-      <div className="flex gap-12">
-        <Link className={`font-bold`} to="/">
-          {title}
+      <div className="flex gap-12 items-center justify-center">
+        <Link to="/">
+          <img src="src\assets\LogoBready.svg" alt="Logo Bready" />
         </Link>
-        <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link key={item.id} to={item.to} target={item.target}>
-              {item.title}
-            </Link>
-          ))}
-        </nav>
+        <div className="h-14 w-6/12 rounded-3xl bg-whitebg">
+          <nav className="flex gap-5 text-base">
+            {/* Top level menu items */}
+            {(menu?.items || []).map((item) => (
+              <Link key={item.id} to={item.to} target={item.target}>
+                {item.title}
+              </Link>
+            ))}
+            <button onClick={openCart}>
+              <IconBag />
+              <CartBadge dark={isHome} />
+            </button>
+          </nav>
+        </div>
       </div>
       <div className="flex items-center gap-1">
-        <form
+        {/*         <form
           action={`/${countryCode ? countryCode + '/' : ''}search`}
           className="flex items-center gap-2"
         >
@@ -171,14 +173,10 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
           <button type="submit" className={styles.button}>
             <IconSearch />
           </button>
-        </form>
-        <Link to={'/account'} className={styles.button}>
+        </form> */}
+        {/* <Link to={'/account'} className={styles.button}>
           <IconAccount />
-        </Link>
-        <button onClick={openCart} className={styles.button}>
-          <IconBag />
-          <CartBadge dark={isHome} />
-        </button>
+        </Link> */}
       </div>
     </header>
   );
