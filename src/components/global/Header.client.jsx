@@ -79,7 +79,11 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
         <button onClick={openMenu} className={styles.button}>
           <IconMenu />
         </button>
-        <form
+        <button onClick={openCart} className={styles.button}>
+          <IconBag />
+          <CartBadge dark={isHome} />
+        </button>
+        {/* <form
           action={`/${countryCode ? countryCode + '/' : ''}search`}
           className="items-center gap-2 sm:flex"
         >
@@ -97,7 +101,7 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
             placeholder="Search"
             name="q"
           />
-        </form>
+        </form> */}
       </div>
 
       <Link
@@ -113,10 +117,6 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
         <Link to={'/account'} className={styles.button}>
           <IconAccount />
         </Link>
-        <button onClick={openCart} className={styles.button}>
-          <IconBag />
-          <CartBadge dark={isHome} />
-        </button>
       </div>
     </header>
   );
@@ -130,32 +130,41 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
       'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
     container: `${isHome ? '' : 'bg-contrast/80 text-primary'} ${
       y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    } h-nav `,
+    } h-nav sticky top-0 z-[100]`,
   };
 
   return (
     <header role="banner" className={styles.container}>
-      <div className="flex gap-12 items-center justify-center">
+      <div className="flex gap-12 items-center justify-center mt-6 sticky top-0 ">
         <Link to="/">
           <img src="src\assets\LogoBready.svg" alt="Logo Bready" />
         </Link>
-        <div className="h-14 w-6/12 rounded-3xl bg-whitebg">
-          <nav className="flex gap-5 text-base">
+        <div className="h-14 w-[765px] rounded-[30px] bg-whitebg flex items-center justify-center pt-2.5 pr-2.5 pb-2.5 pl-10">
+          <nav className="flex gap-[20px] items-center ">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
-              <Link key={item.id} to={item.to} target={item.target}>
+              <Link
+                className="text-base font-medium hover:font-bold text-black hover:text-redbg transition ease-in-out duration-400"
+                key={item.id}
+                to={item.to}
+                target={item.target}
+              >
                 {item.title}
               </Link>
             ))}
-            <button onClick={openCart}>
-              <IconBag />
+            <button
+              className="w-10 h-10 rounded-full bg-[#ED6F4E] flex items-center justify-center "
+              onClick={openCart}
+            >
+              {/* <IconBag /> */}
+              <img src="src\assets\Basket.svg" alt="cart" />
               <CartBadge dark={isHome} />
             </button>
           </nav>
         </div>
       </div>
-      <div className="flex items-center gap-1">
-        {/*         <form
+      {/*  <div className="flex items-center gap-1">
+        <form
           action={`/${countryCode ? countryCode + '/' : ''}search`}
           className="flex items-center gap-2"
         >
@@ -173,11 +182,11 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
           <button type="submit" className={styles.button}>
             <IconSearch />
           </button>
-        </form> */}
-        {/* <Link to={'/account'} className={styles.button}>
+        </form>
+        <Link to={'/account'} className={styles.button}>
           <IconAccount />
-        </Link> */}
-      </div>
+        </Link>
+      </div> */}
     </header>
   );
 }

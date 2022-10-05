@@ -24,7 +24,7 @@ export function Layout({children}) {
           </a>
         </div>
         <AnnouncementBar />
-        <Suspense fallback={<Header title={SHOP_NAME_FALLBACK} />}>
+        <Suspense fallback={<Header />}>
           <HeaderWithMenu />
         </Suspense>
         <main role="main" id="mainContent" className="flex-grow">
